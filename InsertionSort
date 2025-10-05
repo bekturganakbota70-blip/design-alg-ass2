@@ -1,0 +1,50 @@
+package algorithms;
+
+/**
+ * Insertion Sort implementation with optimization
+ * for nearly sorted arrays.
+ */
+public class InsertionSort {
+
+    private int comparisons;
+    private int swaps;
+
+    public void resetMetrics() {
+        comparisons = 0;
+        swaps = 0;
+    }
+
+    public int getComparisons() {
+        return comparisons;
+    }
+
+    public int getSwaps() {
+        return swaps;
+    }
+
+    /**
+     * Sort array in ascending order
+     * @param arr input array
+     */
+    public void sort(int[] arr) {
+        resetMetrics();
+
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+
+            // optimization: early stop if array is almost sorted
+            while (j >= 0) {
+                comparisons++;
+                if (arr[j] > key) {
+                    arr[j + 1] = arr[j];
+                    swaps++;
+                    j--;
+                } else {
+                    break;
+                }
+            }
+            arr[j + 1] = key;
+        }
+    }
+}
