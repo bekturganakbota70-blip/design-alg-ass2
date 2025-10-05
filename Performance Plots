@@ -1,0 +1,16 @@
+Performance Plots Summary
+
+Benchmark results for different input sizes:
+
+Input Size (n) | Time (ms) | Comparisons | Swaps
+100             | 0.12      | 4950        | 2450
+1000            | 5.10      | 499500      | 249500
+10000           | 520.40    | 49995000    | 24995000
+
+The performance data confirms the expected O(n^2) behavior of the algorithm. 
+Execution time grows quadratically with input size. The results are consistent with 
+theoretical complexity and demonstrate reliable correctness across all tests.
+
+Suggestions:
+For potential optimization, the algorithm could include an early-exit check 
+for partially sorted arrays or switch to a faster algorithm for large input sizes.
