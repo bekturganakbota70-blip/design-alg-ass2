@@ -1,0 +1,47 @@
+package algorithms;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class InsertionSortTest {
+
+    @Test
+    void testEmptyArray() {
+        InsertionSort sorter = new InsertionSort();
+        int[] arr = {};
+        sorter.sort(arr);
+        assertArrayEquals(new int[]{}, arr);
+    }
+
+    @Test
+    void testSingleElement() {
+        InsertionSort sorter = new InsertionSort();
+        int[] arr = {42};
+        sorter.sort(arr);
+        assertArrayEquals(new int[]{42}, arr);
+    }
+
+    @Test
+    void testSortedArray() {
+        InsertionSort sorter = new InsertionSort();
+        int[] arr = {1, 2, 3, 4, 5};
+        sorter.sort(arr);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arr);
+    }
+
+    @Test
+    void testReverseArray() {
+        InsertionSort sorter = new InsertionSort();
+        int[] arr = {5, 4, 3, 2, 1};
+        sorter.sort(arr);
+        assertArrayEquals(new int[]{1, 2, 3, 4, 5}, arr);
+    }
+
+    @Test
+    void testDuplicates() {
+        InsertionSort sorter = new InsertionSort();
+        int[] arr = {3, 1, 3, 2, 1};
+        sorter.sort(arr);
+        assertArrayEquals(new int[]{1, 1, 2, 3, 3}, arr);
+    }
+}
