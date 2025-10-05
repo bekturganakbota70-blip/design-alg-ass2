@@ -1,0 +1,36 @@
+package metrics;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+/**
+ * Utility class for exporting benchmark results to a CSV file.
+ */
+public class CSVExporter {
+    private final String fileName;
+    private boolean headerWritten = false;
+
+    public CSVExporter(String fileName) {
+        this.fileName = fileName;
+    }
+
+    /**
+     * Append one line of benchmark data to CSV file.
+     *
+     * @param n           input size
+     * @param timeMs      execution time in milliseconds
+     * @param comparisons number of comparisons
+     * @param swaps       number of swaps
+     */
+    public void writeResult(int n, double timeMs, long comparisons, long swaps) {
+        try (FileWriter writer = new FileWriter(fileName, true)) {
+            if (!headerWritten) {
+                writer.write("n,time_ms,comparisons,swaps\n");
+                headerWritten = true;
+            }
+            writer.write(n + "," + timeMs + "," + comparisons + "," + swaps + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
