@@ -50,9 +50,9 @@ java -cp target/classes cli.BenchmarkRunner
 
 Example output:
 
-n=100 | time=0.12 ms | comparisons=4550 | swaps=2300
-n=1000 | time=4.50 ms | comparisons=254890 | swaps=128340
-n=10000 | time=480.75 ms | comparisons=25,000,000 | swaps=12,400,000
+n=100 | time=0,078 ms | comparisons=2688 | swaps=2592
+n=1000 | time=2,441 ms | comparisons=252558 | swaps=251567
+n=10000 | time=24,919 ms | comparisons=25038444 | swaps=25028457
 
 
 Results are automatically saved to:
@@ -60,71 +60,22 @@ Results are automatically saved to:
 benchmark_results.csv
 
 📊 Example Output (CSV)
-n	time_ms	comparisons	swaps
-100	0.12	4550	2300
-1000	4.50	254890	128340
-10000	480.75	25000000	12400000
+n,time_ms,comparisons,swaps
+100,0.0918,2833,2742
+1000,8.5459,253893,252903
+10000,37.0416,24772048,24762054
+n,time_ms,comparisons,swaps
+100,0.1051,2467,2370
+1000,12.5802,248193,247202
+10000,165.3997,25010494,25000503
+
 🧮 Complexity Analysis
 Case	Time Complexity	Space Complexity
 Best Case (nearly sorted)	Ω(n)	O(1)
 Average Case	Θ(n²)	O(1)
 Worst Case (reverse order)	O(n²)	O(1)
 
-Optimization Effect:
-When the array is nearly sorted, the algorithm detects order early and avoids unnecessary swaps, leading to near-linear time.
 
-🧪 Testing
-
-JUnit 5 tests verify correctness and edge cases:
-
-Empty array
-
-Single element
-
-Already sorted
-
-Reverse sorted
-
-With duplicates
-
-To run all tests:
-
-mvn test
-
-📈 Empirical Analysis
-
-CSV data can be visualized using Python or Excel:
-
-Python Example:
-
-import pandas as pd
-import matplotlib.pyplot as plt
-
-data = pd.read_csv("benchmark_results.csv")
-plt.plot(data["n"], data["time_ms"], marker="o")
-plt.xlabel("Input Size (n)")
-plt.ylabel("Time (ms)")
-plt.title("Insertion Sort: Time vs Input Size")
-plt.grid(True)
-plt.show()
-
-
-Result example:
-📊 time_vs_n.png → shows quadratic growth (O(n²)).
-
-🧾 Report (docs/analysis-report.pdf)
-
-The report includes:
-
-Algorithm overview
-
-Theoretical complexity (O, Θ, Ω)
-
-Empirical validation (graphs & CSV data)
-
-Code review and optimization discussion
-
-Conclusion and recommendations
 
 🧠 Conclusion
 
