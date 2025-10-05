@@ -33,9 +33,6 @@ Maven 3.9+
 
 Setup and run:
 
-# Clone and enter the project
-git clone https://github.com/your-username/assignment2-insertionsort
-cd assignment2-insertionsort
 
 # Run all unit tests
 mvn clean test
